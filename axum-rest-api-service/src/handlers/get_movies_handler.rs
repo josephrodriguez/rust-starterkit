@@ -1,9 +1,9 @@
-use axum::http::StatusCode;
+use crate::models::Movie;
 use axum::Json;
+use axum::http::StatusCode;
 use axum::response::IntoResponse;
 use log::info;
 use tokio::fs;
-use crate::models::Movie;
 
 pub(crate) async fn handle_get_movies() -> impl IntoResponse {
     info!("Handle GET /movies endpoint request");
