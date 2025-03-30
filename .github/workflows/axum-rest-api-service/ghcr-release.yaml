@@ -2,11 +2,13 @@ name: ghcr-release (axum-rest-api-service)
 
 on:
   push:
+    branches:
+      - 'main'
     paths:
-      - 'axum-rest-api-service/**'
+      - '../../../axum-rest-api-service'
   pull_request:
     paths:
-      - 'axum-rest-api-service/**'
+      - '../../../axum-rest-api-service'
 
 jobs:
   build:
@@ -50,10 +52,3 @@ jobs:
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
-
-  dependabot:
-    needs: [ build ]
-    permissions: write-all
-    uses: josephrodriguez/github-workflow/.github/workflows/dependabot-merge-pull-request.yaml@main
-    secrets:
-      AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

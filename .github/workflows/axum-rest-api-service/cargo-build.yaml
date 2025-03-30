@@ -1,0 +1,49 @@
+name: cargo-build (axum-rest-api-service)
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'hotfix/*'
+      - 'release/*'
+  pull_request:
+    branches:
+      - '*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install and Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt,clippy
+
+      - name: cargo-cache
+        uses: actions/cache@v4
+        continue-on-error: false
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: cargo-build
+        run: cargo build
+
+      - name: cargo-test
+        run: cargo test
+
+  dependabot:
+    needs: [build]
+    permissions: write-all
+    uses: josephrodriguez/github-workflow/.github/workflows/dependabot-merge-pull-request.yaml@main
+    secrets:
+      AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
