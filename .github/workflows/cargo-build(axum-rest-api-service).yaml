@@ -6,9 +6,13 @@ on:
       - 'feature/*'
       - 'hotfix/*'
       - 'release/*'
+    paths:
+      - 'axum-rest-api-service/**'
   pull_request:
     branches:
       - '*'
+    paths:
+      - 'axum-rest-api-service/**'
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -5,10 +5,10 @@ on:
     branches:
       - 'main'
     paths:
-      - '../../../axum-rest-api-service'
+      - 'axum-rest-api-service/**'
   pull_request:
     paths:
-      - '../../../axum-rest-api-service'
+      - 'axum-rest-api-service/**'
 
 jobs:
   build:
