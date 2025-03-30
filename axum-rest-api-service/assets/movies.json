@@ -1,0 +1,202 @@
+[
+  {
+    "title": "The Shawshank Redemption",
+    "director": "Frank Darabont",
+    "rating": 9.3,
+    "rank": 1,
+    "synopsis": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "genre": "Drama",
+    "release_year": 1994,
+    "cast": "Tim Robbins, Morgan Freeman"
+  },
+  {
+    "title": "The Godfather",
+    "director": "Francis Ford Coppola",
+    "rating": 9.2,
+    "rank": 2,
+    "synopsis": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "genre": "Crime, Drama",
+    "release_year": 1972,
+    "cast": "Marlon Brando, Al Pacino"
+  },
+  {
+    "title": "The Dark Knight",
+    "director": "Christopher Nolan",
+    "rating": 9,
+    "rank": 3,
+    "synopsis": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
+    "genre": "Action, Crime, Drama",
+    "release_year": 2008,
+    "cast": "Christian Bale, Heath Ledger"
+  },
+  {
+    "title": "The Godfather: Part II",
+    "director": "Francis Ford Coppola",
+    "rating": 9,
+    "rank": 4,
+    "synopsis": "The early life and career of Vito Corleone is depicted, as well as his son Michael’s attempt to expand the family business.",
+    "genre": "Crime, Drama",
+    "release_year": 1974,
+    "cast": "Al Pacino, Robert De Niro"
+  },
+  {
+    "title": "The Lord of the Rings: The Return of the King",
+    "director": "Peter Jackson",
+    "rating": 8.9,
+    "rank": 5,
+    "synopsis": "Gandalf and Aragorn lead the World of Men against Sauron to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    "genre": "Action, Adventure, Drama",
+    "release_year": 2003,
+    "cast": "Elijah Wood, Viggo Mortensen"
+  },
+  {
+    "title": "Pulp Fiction",
+    "director": "Quentin Tarantino",
+    "rating": 8.9,
+    "rank": 6,
+    "synopsis": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "genre": "Crime, Drama",
+    "release_year": 1994,
+    "cast": "John Travolta, Uma Thurman, Samuel L. Jackson"
+  },
+  {
+    "title": "Schindler's List",
+    "director": "Steven Spielberg",
+    "rating": 8.9,
+    "rank": 7,
+    "synopsis": "In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    "genre": "Biography, Drama, History",
+    "release_year": 1993,
+    "cast": "Liam Neeson, Ben Kingsley, Ralph Fiennes"
+  },
+  {
+    "title": "12 Angry Men",
+    "director": "Sidney Lumet",
+    "rating": 8.9,
+    "rank": 8,
+    "synopsis": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
+    "genre": "Drama",
+    "release_year": 1957,
+    "cast": "Henry Fonda, Lee J. Cobb, Martin Balsam"
+  },
+  {
+    "title": "The Good, the Bad and the Ugly",
+    "director": "Sergio Leone",
+    "rating": 8.8,
+    "rank": 9,
+    "synopsis": "A bounty hunting scam joins two unlikely allies in an epic duel with a third opponent in a quest for gold buried in a cemetery.",
+    "genre": "Adventure, Western",
+    "release_year": 1966,
+    "cast": "Clint Eastwood, Eli Wallach, Lee Van Cleef"
+  },
+  {
+    "title": "The Fight Club",
+    "director": "David Fincher",
+    "rating": 8.8,
+    "rank": 10,
+    "synopsis": "An insomniac office worker, looking for a way to change his life, crosses paths with a soap salesman, creating an underground fight club.",
+    "genre": "Drama",
+    "release_year": 1999,
+    "cast": "Brad Pitt, Edward Norton, Helena Bonham Carter"
+  },
+  {
+    "title": "Forrest Gump",
+    "director": "Robert Zemeckis",
+    "rating": 8.8,
+    "rank": 11,
+    "synopsis": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an extraordinary life story.",
+    "genre": "Drama, Romance",
+    "release_year": 1994,
+    "cast": "Tom Hanks, Robin Wright"
+  },
+  {
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "rating": 8.8,
+    "rank": 12,
+    "synopsis": "A thief who enters the dreams of others to steal secrets from their subconscious is given the task of planting an idea into the mind of a CEO.",
+    "genre": "Action, Adventure, Sci-Fi",
+    "release_year": 2010,
+    "cast": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page"
+  },
+  {
+    "title": "The Matrix",
+    "director": "Lana Wachowski, Lilly Wachowski",
+    "rating": 8.7,
+    "rank": 13,
+    "synopsis": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "genre": "Action, Sci-Fi",
+    "release_year": 1999,
+    "cast": "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss"
+  },
+  {
+    "title": "Goodfellas",
+    "director": "Martin Scorsese",
+    "rating": 8.7,
+    "rank": 14,
+    "synopsis": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen and his mob partners, Jimmy Conway and Tommy DeVito.",
+    "genre": "Crime, Drama",
+    "release_year": 1990,
+    "cast": "Robert De Niro, Ray Liotta, Joe Pesci"
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "director": "Jonathan Demme",
+    "rating": 8.6,
+    "rank": 15,
+    "synopsis": "A young F.B.I. cadet must confide in an incarcerated and manipulative killer to receive his help on catching another serial killer who skins his victims.",
+    "genre": "Crime, Drama, Thriller",
+    "release_year": 1991,
+    "cast": "Jodie Foster, Anthony Hopkins"
+  },
+  {
+    "title": "City of God",
+    "director": "Fernando Meirelles, Kátia Lund",
+    "rating": 8.6,
+    "rank": 16,
+    "synopsis": "In the slums of Rio, two kids' paths diverge as one struggles to become a photographer and the other a kingpin.",
+    "genre": "Crime, Drama",
+    "release_year": 2002,
+    "cast": "Alexandre Rodrigues, Leandro Firmino, Phellipe Haagensen"
+  },
+  {
+    "title": "Life Is Beautiful",
+    "director": "Roberto Benigni",
+    "rating": 8.6,
+    "rank": 17,
+    "synopsis": "A Jewish man uses his imagination to protect his son in a Nazi concentration camp.",
+    "genre": "Comedy, Drama, Romance",
+    "release_year": 1997,
+    "cast": "Roberto Benigni, Nicoletta Braschi"
+  },
+  {
+    "title": "Se7en",
+    "director": "David Fincher",
+    "rating": 8.6,
+    "rank": 18,
+    "synopsis": "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his modus operandi.",
+    "genre": "Crime, Drama, Mystery",
+    "release_year": 1995,
+    "cast": "Brad Pitt, Morgan Freeman, Kevin Spacey"
+  },
+  {
+    "title": "The Usual Suspects",
+    "director": "Bryan Singer",
+    "rating": 8.5,
+    "rank": 19,
+    "synopsis": "A sole survivor tells the twisted events leading up to a horrific gun battle on a ship, which began when five criminals met at a seemingly random police lineup.",
+    "genre": "Crime, Drama, Mystery",
+    "release_year": 1995,
+    "cast": "Kevin Spacey, Gabriel Byrne, Chazz Palminteri"
+  },
+  {
+    "title": "The Lion King",
+    "director": "Roger Allers, Rob Minkoff",
+    "rating": 8.5,
+    "rank": 20,
+    "synopsis": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to seize the throne from Simba's father.",
+    "genre": "Animation, Adventure, Drama",
+    "release_year": 1994,
+    "cast": "Matthew Broderick, Jeremy Irons, James Earl Jones"
+  }
+]

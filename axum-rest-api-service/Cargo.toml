@@ -1,0 +1,16 @@
+[package]
+name = "axum-rest-api-service"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "axum-rest-api-service"
+path = "src/main.rs"
+
+[dependencies]
+axum = "0.8.3"
+env_logger = "0.11.7"
+log = "0.4.27"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+tokio = { version = "1.44.1", features = ["full"] }
