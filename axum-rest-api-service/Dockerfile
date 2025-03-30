@@ -13,7 +13,7 @@ RUN cargo build --release
 
 # Stage 2: Copy the binary to a minimal Debian image
 FROM debian:stable-slim
-LABEL authors="josephrodriguez"
+LABEL authors="@josephrodriguez"
 
 RUN useradd -m rust
 
