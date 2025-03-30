@@ -26,6 +26,9 @@ jobs:
           toolchain: stable
           components: rustfmt,clippy
 
+      - name: ls
+        run: ls -lsah
+
       - name: cargo-cache
         uses: actions/cache@v4
         continue-on-error: false
@@ -36,7 +39,7 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('axum-rest-api-service/Cargo.toml') }}
+          key: ${{ runner.os }}-cargo-${{ hashFiles('./axum-rest-api-service/Cargo.toml') }}
           restore-keys: ${{ runner.os }}-cargo-
 
       - name: cargo-build
