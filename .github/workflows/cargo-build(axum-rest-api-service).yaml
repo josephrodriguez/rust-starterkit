@@ -31,7 +31,7 @@ jobs:
 
       - name: cargo-cache
         uses: actions/cache@v4
-        working-directory: axum-rest-api-service
+        working-directory: ./axum-rest-api-service
         with:
           path: |
             ~/.cargo/bin/
@@ -43,11 +43,11 @@ jobs:
           restore-keys: ${{ runner.os }}-cargo-
 
       - name: cargo-build
-        working-directory: axum-rest-api-service
+        working-directory: ./axum-rest-api-service
         run: cargo build
 
       - name: cargo-test
-        working-directory: axum-rest-api-service
+        working-directory: ./axum-rest-api-service
         run: cargo test
 
   dependabot:
