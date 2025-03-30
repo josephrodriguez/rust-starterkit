@@ -6,9 +6,6 @@ on:
       - 'main'
     paths:
       - 'axum-rest-api-service/**'
-  pull_request:
-    paths:
-      - 'axum-rest-api-service/**'
 
 jobs:
   build:
