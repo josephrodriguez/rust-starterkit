@@ -1,7 +1,7 @@
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
-struct Movie {
+pub struct Movie {
     title: String,
     director: String,
     rating: f32,
