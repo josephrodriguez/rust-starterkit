@@ -1,8 +1,12 @@
 use std::env;
+use std::error::Error;
+use axum::Router;
 use env_logger::{Builder, WriteStyle};
 use log::{info, LevelFilter};
+use tokio::net::TcpListener;
 
-fn main() {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
     Builder::new()
         .filter_level(LevelFilter::Debug)
         .write_style(WriteStyle::Always)
@@ -12,4 +16,6 @@ fn main() {
     let address = format!("0.0.0.0:{}", port);
 
     info!("Hello, world from Rust with Axum!");
+
+    Ok(())
 }
