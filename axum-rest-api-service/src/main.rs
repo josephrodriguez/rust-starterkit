@@ -1,3 +1,5 @@
+mod models;
+
 use axum::Router;
 use env_logger::{Builder, WriteStyle};
 use log::{LevelFilter, info};
@@ -15,7 +17,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     info!("Starting up...");
 
     let port =
-        env::var("RUST_STARTER_KIT_AXUM_RESTAPI_PORT").unwrap_or_else(|_| "3000".to_string());
+        env::var("RUST_STARTERKIT_AXUM_RESTAPI_PORT").unwrap_or_else(|_| "3000".to_string());
     let address = format!("0.0.0.0:{}", port);
 
     let app = Router::new();
