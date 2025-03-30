@@ -34,5 +34,13 @@ GET /movies
 ]
 ```
 
+## 🐳 Docker
+
+### Steps to run the service
+
+```shell
+docker run -p 3000:3000 ghcr.io/josephrodriguez/rust-starterkit/axum-rest-api-service:latest
+```
+
 ## 📜 License
 GNU General Public License v3.0
