@@ -1,16 +1,14 @@
 mod models;
+mod handlers;
 
-use axum::{Json, Router};
+use axum::Router;
 use env_logger::{Builder, WriteStyle};
 use log::{LevelFilter, info};
 use std::env;
 use std::error::Error;
-use axum::http::StatusCode;
-use axum::response::IntoResponse;
 use axum::routing::get;
-use tokio::fs;
 use tokio::net::TcpListener;
-use crate::models::Movie;
+use crate::handlers::handle_get_movies;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -39,16 +37,3 @@ async fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-async fn handle_get_movies() -> impl IntoResponse {
-    let movies_json = match fs::read_to_string("../assets/movies.json").await {
-        Ok(data) => data,
-        Err(e) => return (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
-    };
-
-    let movies: Vec<Movie> = match serde_json::from_str(&movies_json) {
-        Ok(movies) => movies,
-        Err(e) => return (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
-    };
-
-    Json(movies).into_response()
-}
