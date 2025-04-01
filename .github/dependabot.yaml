@@ -7,12 +7,20 @@ updates:
 
   - package-ecosystem: "cargo"
     directories:
+      - "./actixweb-rest-api-service"
       - "./axum-rest-api-service"
+      - "./rocket-rest-api-service"
+      - "./tide-rest-api-service"
+      - "./warp-rest-api-service"
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "docker"
     directories:
+      - "./actixweb-rest-api-service"
       - "./axum-rest-api-service"
+      - "./rocket-rest-api-service"
+      - "./tide-rest-api-service"
+      - "./warp-rest-api-service"
     schedule:
       interval: "weekly"
