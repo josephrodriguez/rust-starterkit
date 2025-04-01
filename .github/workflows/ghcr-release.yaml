@@ -1,15 +1,27 @@
-name: ghcr-release (axum-rest-api-service)
+name: ghcr-release
 
 on:
   push:
     branches:
       - 'main'
     paths:
+      - 'actixweb-rest-api-service/**'
       - 'axum-rest-api-service/**'
+      - 'rocket-rest-api-service/**'
+      - 'tide-rest-api-service/**'
+      - 'warp-rest-api-service/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service:
+          - actixweb-rest-api-service
+          - axum-rest-api-service
+          - rocket-rest-api-service
+          - tide-rest-api-service
+          - warp-rest-api-service
     permissions:
       contents: read
       packages: write
@@ -31,7 +43,7 @@ jobs:
         id: metadata
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}/axum-rest-api-service
+          images: ghcr.io/${{ github.repository }}/${{ matrix.service }}
           tags: |
             type=raw,value={{date 'YYYYMMDDHHmm'}}-{{sha}}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
@@ -41,8 +53,8 @@ jobs:
         with:
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          context: axum-rest-api-service/
-          file: axum-rest-api-service/Dockerfile
+          context: ${{ matrix.service }}/
+          file: ${{ matrix.service }}/Dockerfile
           platforms: linux/arm64, linux/amd64
           provenance: mode=max
           sbom: true
