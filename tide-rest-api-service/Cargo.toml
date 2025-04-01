@@ -8,3 +8,9 @@ name = "tide-rest-api-service"
 path = "src/main.rs"
 
 [dependencies]
+env_logger = "0.11.7"
+log = "0.4.27"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+tide = "0.16.0"
+tokio = { version = "1.44.1", features = ["full"] }
