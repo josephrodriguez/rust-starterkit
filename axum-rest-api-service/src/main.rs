@@ -1,5 +1,4 @@
 mod handlers;
-mod models;
 
 use crate::handlers::handle_get_movies;
 use axum::Router;

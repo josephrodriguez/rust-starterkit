@@ -2112,6 +2112,7 @@ dependencies = [
 name = "tide-rest-api-service"
 version = "0.1.0"
 dependencies = [
+ "async-std",
  "env_logger",
  "log",
  "serde",
