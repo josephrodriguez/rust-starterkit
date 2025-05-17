@@ -1,3 +1,3 @@
-mod grpc_burst_service;
+mod grpc_stress_service;
 
-pub use grpc_burst_service::StressSimulatorService;
+pub use grpc_stress_service::StressSimulatorService;

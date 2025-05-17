@@ -1,19 +1,21 @@
-FROM rust:1.87.0 as builder
+FROM rust:1.87.0-slim as builder
+ARG CARGO_PROFILE=release
 
-WORKDIR /usr/src/app
+WORKDIR /app
+RUN apt-get update && apt-get install protobuf-compiler -y --no-install-recommends
 
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src
 COPY proto ./proto
 COPY build.rs ./
 
-RUN cargo build --release
+RUN cargo build --profile=$CARGO_PROFILE
 
-FROM debian:buster-slim
+FROM debian:stable-slim
 ARG CARGO_PROFILE=release
 
-COPY --from=builder /usr/src/app/target/release/your_binary_name /usr/local/bin/your_binary_name
+WORKDIR /app
+COPY --from=builder /app/target/$CARGO_PROFILE/tonic-grpc-service .
 
 EXPOSE 50051
-
-CMD ["/usr/local/bin/your_binary_name"]
+ENTRYPOINT ["./tonic-grpc-service"]
