@@ -1,10 +1,8 @@
 mod handlers;
 
 use crate::handlers::handle_get_movies;
-use axum::Router;
 use axum::routing::get;
-use env_logger::{Builder, WriteStyle};
-use log::{LevelFilter, info};
+use axum::Router;
 use std::env;
 use std::error::Error;
 use tokio::net::TcpListener;
