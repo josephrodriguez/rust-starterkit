@@ -1,5 +1,5 @@
-use crate::grpc_stress_simulator_service_server::GrpcStressSimulatorService;
-use crate::{BurstRequest, BurstResponse, MemoryRequest, MemoryResponse};
+use crate::grpc_pressure::grpc_stress_simulator_service_server::GrpcStressSimulatorService;
+use crate::grpc_pressure::{CpuLoadRequest, CpuLoadResponse, MemoryPressureRequest, MemoryPressureResponse};
 use log::info;
 use std::sync::Arc;
 use std::time::Duration;
@@ -7,21 +7,21 @@ use tokio::sync::Mutex;
 use tokio::time::sleep;
 use tonic::{Request, Response, Status};
 
-pub mod grpc_stress {
-    tonic::include_proto!("grpc_package");
+pub mod grpc_service {
+    tonic::include_proto!("grpc_pressure");
 }
 
 #[derive(Debug, Default)]
-pub struct StressSimulatorService {
+pub struct PressureService {
     memory_hog: Arc<Mutex<Vec<Vec<u8>>>>,
 }
 
 #[tonic::async_trait]
-impl GrpcStressSimulatorService for StressSimulatorService {
-    async fn simulate_burst(
+impl GrpcStressSimulatorService for PressureService {
+    async fn simulate_cpu_load(
         &self,
-        request: Request<BurstRequest>,
-    ) -> Result<Response<BurstResponse>, Status> {
+        request: Request<CpuLoadRequest>,
+    ) -> Result<Response<CpuLoadResponse>, Status> {
         let request_inner = request.into_inner();
         let burst_time = Duration::from_millis(request_inner.duration_ms as u64);
         let upper_bound = request_inner.upper_bound;
@@ -47,7 +47,7 @@ impl GrpcStressSimulatorService for StressSimulatorService {
             );
         });
 
-        Ok(Response::new(BurstResponse {
+        Ok(Response::new(CpuLoadResponse {
             message: format!(
                 "Simulating CPU burst for {}ms with upper bound {}",
                 request_inner.duration_ms, upper_bound
@@ -55,10 +55,10 @@ impl GrpcStressSimulatorService for StressSimulatorService {
         }))
     }
 
-    async fn simulate_memory_leak(
+    async fn simulate_memory_pressure(
         &self,
-        request: Request<MemoryRequest>,
-    ) -> Result<Response<MemoryResponse>, Status> {
+        request: Request<MemoryPressureRequest>,
+    ) -> Result<Response<MemoryPressureResponse>, Status> {
         let inner_request = request.into_inner();
         let duration = Duration::from_millis(inner_request.duration_ms as u64);
         let memory_bytes = inner_request.memory_bytes as usize;
@@ -76,7 +76,7 @@ impl GrpcStressSimulatorService for StressSimulatorService {
         let mut store = self.memory_hog.lock().await;
         store.push(hog);
 
-        let handle = {
+        let _handle = {
             let memory_hog = Arc::clone(&self.memory_hog);
             tokio::spawn(async move {
                 sleep(duration).await;
@@ -90,7 +90,7 @@ impl GrpcStressSimulatorService for StressSimulatorService {
             })
         };
 
-        Ok(Response::new(MemoryResponse {
+        Ok(Response::new(MemoryPressureResponse {
             message: format!(
                 "Allocated {} bytes of memory for {} ms",
                 memory_bytes, inner_request.duration_ms
