@@ -9,7 +9,7 @@ use tokio::net::TcpListener;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let port = env::var("RUST_AXUM_PORT").unwrap_or_else(|_| "3000".to_string());
+    let port = env::var("RUST_PORT").unwrap_or_else(|_| "3000".to_string());
     let address = format!("0.0.0.0:{}", port);
 
     let app = Router::new().route("/movies", get(handle_get_movies));

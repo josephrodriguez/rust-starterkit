@@ -1,14 +1,16 @@
-use tokio::fs;
+use std::env;
 use warp::Filter;
 
 #[tokio::main]
 async fn main() {
+    let host = env::var("RUST_ADDRESS").unwrap_or_else(|_| "0.0.0.0".to_string());
+    let port = env::var("RUST_PORT").unwrap_or_else(|_| "3000".to_string());
+    let address = format!("{}:{}", host, port);
+
     let movies_route = warp::path("movies")
         .and(warp::get())
         .map(|| {
-            let data = fs::read_to_string("movies.json").unwrap_or_else(|_| "[]".to_string());
-            warp::reply::json(&serde_json::from_str::<Vec<Movie>>(&data).unwrap_or_default())
         });
 
-    warp::serve(movies_route).run(([0, 0, 0, 0], 3000)).await;
+    // warp::serve(movies_route).run(([0, 0, 0, 0], 3000)).await;
 }
