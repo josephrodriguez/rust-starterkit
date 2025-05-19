@@ -12,6 +12,7 @@ on:
       - 'rocket-rest-api-service/**'
       - 'tide-rest-api-service/**'
       - 'warp-rest-api-service/**'
+      - 'tonic-grpc-service/**'
   pull_request:
     branches:
       - '*'
@@ -21,6 +22,7 @@ on:
       - 'rocket-rest-api-service/**'
       - 'tide-rest-api-service/**'
       - 'warp-rest-api-service/**'
+      - 'tonic-grpc-service/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,6 +34,7 @@ jobs:
           - rocket-rest-api-service
           - tide-rest-api-service
           - warp-rest-api-service
+          - tonic-grpc-service
 
     defaults:
       run:

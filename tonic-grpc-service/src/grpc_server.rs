@@ -1,18 +1,17 @@
+use crate::grpc_pressure::grpc_stress_simulator_service_server::GrpcStressSimulatorServiceServer;
+use crate::grpc_service::PressureService;
+use env_logger::Env;
+use log::info;
 use std::env;
 use std::error::Error;
 use std::net::SocketAddr;
-use env_logger::Env;
-use log::info;
 use tonic::transport::Server;
 use tonic_reflection::server::Builder as ReflectionBuilder;
-use crate::grpc_pressure::grpc_stress_simulator_service_server::GrpcStressSimulatorServiceServer;
-use crate::grpc_service::{PressureService};
 
 pub mod grpc_service {
     tonic::include_proto!("grpc_pressure");
 
-    pub const FILE_DESCRIPTOR_SET: &[u8] =
-        tonic::include_file_descriptor_set!("descriptor");
+    pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("descriptor");
 }
 
 pub async fn run() -> Result<(), Box<dyn Error>> {
@@ -35,9 +34,7 @@ fn load_grpc_addr() -> Result<SocketAddr, Box<dyn Error>> {
     Ok(addr)
 }
 
-async fn start_grpc_server(
-    addr: SocketAddr,
-) -> Result<(), Box<dyn Error>> {
+async fn start_grpc_server(addr: SocketAddr) -> Result<(), Box<dyn Error>> {
     let grpc_service = PressureService::default();
 
     let reflection_service = ReflectionBuilder::configure()

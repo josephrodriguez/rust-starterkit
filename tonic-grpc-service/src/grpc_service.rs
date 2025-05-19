@@ -1,5 +1,7 @@
 use crate::grpc_pressure::grpc_stress_simulator_service_server::GrpcStressSimulatorService;
-use crate::grpc_pressure::{CpuLoadRequest, CpuLoadResponse, MemoryPressureRequest, MemoryPressureResponse};
+use crate::grpc_pressure::{
+    CpuLoadRequest, CpuLoadResponse, MemoryPressureRequest, MemoryPressureResponse,
+};
 use log::info;
 use std::sync::Arc;
 use std::time::Duration;
@@ -12,9 +14,7 @@ pub mod grpc_service {
 }
 
 #[derive(Debug, Default)]
-pub struct PressureService {
-    memory_hog: Arc<Mutex<Vec<Vec<u8>>>>,
-}
+pub struct PressureService;
 
 #[tonic::async_trait]
 impl GrpcStressSimulatorService for PressureService {
@@ -68,27 +68,21 @@ impl GrpcStressSimulatorService for PressureService {
             memory_bytes, inner_request.duration_ms
         );
 
-        let mut hog = vec![0u8; memory_bytes];
-        for i in 0..memory_bytes {
-            hog[i] = (i % 256) as u8;
+        {
+            let mut hog = vec![0u8; memory_bytes];
+            for i in 0..memory_bytes {
+                hog[i] = (i % 256) as u8;
+            }
+
+            sleep(duration).await;
+
+            drop(hog);
         }
 
-        let mut store = self.memory_hog.lock().await;
-        store.push(hog);
-
-        let _handle = {
-            let memory_hog = Arc::clone(&self.memory_hog);
-            tokio::spawn(async move {
-                sleep(duration).await;
-                let mut mem = memory_hog.lock().await;
-                mem.clear(); // release memory
-
-                info!(
-                    "Released {} bytes of memory after {} ms",
-                    memory_bytes, inner_request.duration_ms
-                );
-            })
-        };
+        info!(
+            "Released {} bytes of memory after {} ms",
+            memory_bytes, inner_request.duration_ms
+        );
 
         Ok(Response::new(MemoryPressureResponse {
             message: format!(

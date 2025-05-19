@@ -10,6 +10,7 @@ on:
       - 'rocket-rest-api-service/**'
       - 'tide-rest-api-service/**'
       - 'warp-rest-api-service/**'
+      - 'tonic-grpc-service/**'
 
 jobs:
   build:
@@ -22,6 +23,7 @@ jobs:
           - rocket-rest-api-service
           - tide-rest-api-service
           - warp-rest-api-service
+          - tonic-grpc-service
     permissions:
       contents: read
       packages: write

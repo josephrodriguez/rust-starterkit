@@ -1,6 +1,5 @@
-mod grpc_service;
 mod grpc_server;
-
+mod grpc_service;
 
 pub mod grpc_pressure {
     tonic::include_proto!("grpc_pressure");

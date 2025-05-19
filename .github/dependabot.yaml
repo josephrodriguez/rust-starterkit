@@ -12,6 +12,7 @@ updates:
       - "./rocket-rest-api-service"
       - "./tide-rest-api-service"
       - "./warp-rest-api-service"
+      - "./tonic-grpc-service"
     schedule:
       interval: "weekly"
 
@@ -22,5 +23,6 @@ updates:
       - "./rocket-rest-api-service"
       - "./tide-rest-api-service"
       - "./warp-rest-api-service"
+      - "./tonic-grpc-service"
     schedule:
       interval: "weekly"
