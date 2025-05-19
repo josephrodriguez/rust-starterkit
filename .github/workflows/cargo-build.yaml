@@ -1,4 +1,4 @@
-name: cargo-build (axum-rest-api-service)
+name: cargo-build
 
 on:
   push:
@@ -7,18 +7,42 @@ on:
       - 'hotfix/*'
       - 'release/*'
     paths:
+      - 'actixweb-rest-api-service/**'
       - 'axum-rest-api-service/**'
+      - 'rocket-rest-api-service/**'
+      - 'tide-rest-api-service/**'
+      - 'warp-rest-api-service/**'
+      - 'tonic-grpc-service/**'
   pull_request:
     branches:
-      - '*'
+      - 'feature/*'
+      - 'hotfix/*'
+      - 'release/*'
     paths:
+      - 'actixweb-rest-api-service/**'
       - 'axum-rest-api-service/**'
+      - 'rocket-rest-api-service/**'
+      - 'tide-rest-api-service/**'
+      - 'warp-rest-api-service/**'
+      - 'tonic-grpc-service/**'
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - service: actixweb-rest-api-service
+          - service: axum-rest-api-service
+          - service: rocket-rest-api-service
+          - service: tide-rest-api-service
+          - service: warp-rest-api-service
+          - service: tonic-grpc-service
+            command: sudo apt-get update && sudo apt-get install -y --no-install-recommends protobuf-compiler
+
     defaults:
       run:
-        working-directory: ./axum-rest-api-service
+        working-directory: ./${{ matrix.service }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -38,8 +62,12 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-axum-rest-api-service-cargo-${{ hashFiles('**/Cargo.toml') }}
+          key: ${{ runner.os }}-${{ matrix.service }}-cargo-${{ hashFiles('**/Cargo.toml') }}
           restore-keys: ${{ runner.os }}-cargo-
+
+      - name: project command setup
+        if: matrix.command != null
+        run: ${{ matrix.command }}
 
       - name: cargo-build
         run: cargo build
