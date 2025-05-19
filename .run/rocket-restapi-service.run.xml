@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Tide" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+  <configuration default="false" name="rocket-restapi-service" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
     <option name="command" value="run" />
-    <option name="workingDirectory" value="file://$PROJECT_DIR$/tide-rest-api-service" />
+    <option name="workingDirectory" value="file://$PROJECT_DIR$/rocket-rest-api-service" />
     <envs />
     <option name="emulateTerminal" value="true" />
     <option name="channel" value="DEFAULT" />

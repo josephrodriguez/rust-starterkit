@@ -8,6 +8,7 @@ name = "rocket-rest-api-service"
 path = "src/main.rs"
 
 [dependencies]
+common = { path = "../common" }
 env_logger = "0.11.7"
 log = "0.4.27"
 rocket = { version = "0.5.1", features = ["json"] }

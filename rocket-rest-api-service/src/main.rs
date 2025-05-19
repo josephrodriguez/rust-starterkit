@@ -1,13 +1,14 @@
 #[macro_use] extern crate rocket;
-use rocket::serde::{Serialize, json::Json};
+use rocket::serde::json::Json;
 use std::fs;
+use common::Movie;
 
-#[derive(Serialize)]
-#[serde(crate = "rocket::serde")]
-struct Movie {
-    title: String,
-    year: u16,
-}
+// #[derive(Serialize)]
+// #[serde(crate = "rocket::serde")]
+// struct Movie {
+//     title: String,
+//     year: u16,
+// }
 
 #[get("/movies")]
 fn movies() -> Json<Vec<Movie>> {

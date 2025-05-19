@@ -1,18 +1,17 @@
 use actix_web::{get, App, HttpResponse, HttpServer, Responder};
-use serde::{Deserialize, Serialize};
+use common::Movie;
 use std::fs;
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Movie {
-    title: String,
-    director: String,
-    rating: f32,
-    rank: u32,
-    synopsis: String,
-    genre: String,
-    release_year: u32,
-    cast: String,
-}
+// #[derive(Serialize, Deserialize, Debug)]
+// pub struct Movie {
+//     title: String,
+//     director: String,
+//     rating: f32,
+//     rank: u32,
+//     synopsis: String,
+//     genre: String,
+//     release_year: u32,
+//     cast: String,
+// }
 
 #[get("/movies")]
 async fn movies() -> impl Responder {
