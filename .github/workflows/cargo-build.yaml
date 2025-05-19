@@ -15,7 +15,9 @@ on:
       - 'tonic-grpc-service/**'
   pull_request:
     branches:
-      - '*'
+      - 'feature/*'
+      - 'hotfix/*'
+      - 'release/*'
     paths:
       - 'actixweb-rest-api-service/**'
       - 'axum-rest-api-service/**'
