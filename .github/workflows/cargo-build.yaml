@@ -28,13 +28,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service:
-          - actixweb-rest-api-service
-          - axum-rest-api-service
-          - rocket-rest-api-service
-          - tide-rest-api-service
-          - warp-rest-api-service
-          - tonic-grpc-service
+        include:
+          - service: actixweb-rest-api-service
+          - service: axum-rest-api-service
+          - service: rocket-rest-api-service
+          - service: tide-rest-api-service
+          - service: warp-rest-api-service
+          - service: tonic-grpc-service
+            command: sudo apt-get update && sudo apt-get install -y --no-install-recommends protobuf-compiler
 
     defaults:
       run:
@@ -61,6 +62,10 @@ jobs:
             target/
           key: ${{ runner.os }}-${{ matrix.service }}-cargo-${{ hashFiles('**/Cargo.toml') }}
           restore-keys: ${{ runner.os }}-cargo-
+
+      - name: project command setup
+        if: matrix.command != null
+        run: ${{ matrix.command }}
 
       - name: cargo-build
         run: cargo build
