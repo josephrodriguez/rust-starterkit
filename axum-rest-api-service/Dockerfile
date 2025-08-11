@@ -1,5 +1,5 @@
 # Stage 1: Build the Rust application
-FROM rust:1.88.0-slim AS builder
+FROM rust:1.89.0-slim AS builder
 ARG CARGO_PROFILE=release
 
 WORKDIR /app
