@@ -21,7 +21,7 @@ jobs:
         working-directory: ./axum-rest-api-service
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install and Setup Rust
         uses: actions-rs/toolchain@v1
