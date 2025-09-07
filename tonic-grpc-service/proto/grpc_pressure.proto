@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package grpc_pressure;
+
+service GrpcStressSimulatorService {
+  rpc SimulateCpuLoad (CpuLoadRequest) returns (CpuLoadResponse);
+  rpc SimulateMemoryPressure (MemoryPressureRequest) returns (MemoryPressureResponse);
+}
+
+message CpuLoadRequest {
+  uint32 duration_ms = 1;
+  uint64 upper_bound = 2;
+}
+
+message CpuLoadResponse {
+  string message = 1;
+}
+
+message MemoryPressureRequest {
+  uint32 duration_ms = 1;
+  uint64 memory_bytes = 2;
+}
+
+message MemoryPressureResponse {
+  string message = 1;
+}
