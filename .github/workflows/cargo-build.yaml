@@ -19,84 +19,10 @@ jobs:
 #          - project_dir: tonic-grpc-service
     with:
       cargo_project_dir: ${{ matrix.project.project_dir }}
+      cargo_artifacts_name: ${{ matrix.project.project_dir }}
       cargo_tests_enabled: false
       cargo_clippy_enabled: true
       cargo_audit_enabled: false
-      cargo_artifacts_name: ${{ matrix.project.project_dir }}
-#on:
-#  push:
-#    branches:
-#      - 'feature/*'
-#      - 'hotfix/*'
-#      - 'release/*'
-#    paths:
-#      - 'actixweb-rest-api-service/**'
-#      - 'axum-rest-api-service/**'
-#      - 'rocket-rest-api-service/**'
-#      - 'tide-rest-api-service/**'
-#      - 'warp-rest-api-service/**'
-#      - 'tonic-grpc-service/**'
-#  pull_request:
-#    branches:
-#      - 'feature/*'
-#      - 'hotfix/*'
-#      - 'release/*'
-#    paths:
-#      - 'actixweb-rest-api-service/**'
-#      - 'axum-rest-api-service/**'
-#      - 'rocket-rest-api-service/**'
-#      - 'tide-rest-api-service/**'
-#      - 'warp-rest-api-service/**'
-#      - 'tonic-grpc-service/**'
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        include:
-#          - service: actixweb-rest-api-service
-#          - service: axum-rest-api-service
-#          - service: rocket-rest-api-service
-#          - service: tide-rest-api-service
-#          - service: warp-rest-api-service
-#          - service: tonic-grpc-service
-#            command: sudo apt-get update && sudo apt-get install -y --no-install-recommends protobuf-compiler
-#
-#    defaults:
-#      run:
-#        working-directory: ./${{ matrix.service }}
-#
-#    steps:
-#      - name: Checkout Repository
-#        uses: actions/checkout@v4
-#
-#      - name: Install and Setup Rust
-#        uses: actions-rs/toolchain@v1
-#        with:
-#          toolchain: stable
-#          components: rustfmt,clippy
-#
-#      - name: cargo-cache
-#        uses: actions/cache@v4
-#        with:
-#          path: |
-#            ~/.cargo/bin/
-#            ~/.cargo/registry/index/
-#            ~/.cargo/registry/cache/
-#            ~/.cargo/git/db/
-#            target/
-#          key: ${{ runner.os }}-${{ matrix.service }}-cargo-${{ hashFiles('**/Cargo.toml') }}
-#          restore-keys: ${{ runner.os }}-cargo-
-#
-#      - name: project command setup
-#        if: matrix.command != null
-#        run: ${{ matrix.command }}
-#
-#      - name: cargo-build
-#        run: cargo build
-#
-#      - name: cargo-test
-#        run: cargo test
 
   dependabot:
     needs: [build]
