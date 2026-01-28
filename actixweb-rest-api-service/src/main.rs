@@ -1,17 +1,6 @@
 use actix_web::{App, HttpResponse, HttpServer, Responder, get};
 use common::Movie;
 use std::fs;
-// #[derive(Serialize, Deserialize, Debug)]
-// pub struct Movie {
-//     title: String,
-//     director: String,
-//     rating: f32,
-//     rank: u32,
-//     synopsis: String,
-//     genre: String,
-//     release_year: u32,
-//     cast: String,
-// }
 
 #[get("/movies")]
 async fn movies() -> impl Responder {

@@ -3,9 +3,7 @@ use crate::grpc_pressure::{
     CpuLoadRequest, CpuLoadResponse, MemoryPressureRequest, MemoryPressureResponse,
 };
 use log::info;
-use std::sync::Arc;
 use std::time::Duration;
-use tokio::sync::Mutex;
 use tokio::time::sleep;
 use tonic::{Request, Response, Status};
 
