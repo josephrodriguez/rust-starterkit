@@ -1,7 +1,8 @@
-#[macro_use] extern crate rocket;
+#[macro_use]
+extern crate rocket;
+use common::Movie;
 use rocket::serde::json::Json;
 use std::fs;
-use common::Movie;
 
 // #[derive(Serialize)]
 // #[serde(crate = "rocket::serde")]

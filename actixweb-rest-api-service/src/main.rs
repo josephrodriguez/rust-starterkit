@@ -1,4 +1,4 @@
-use actix_web::{get, App, HttpResponse, HttpServer, Responder};
+use actix_web::{App, HttpResponse, HttpServer, Responder, get};
 use common::Movie;
 use std::fs;
 // #[derive(Serialize, Deserialize, Debug)]
