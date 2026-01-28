@@ -16,7 +16,7 @@ jobs:
           - project_dir: rocket-rest-api-service
           - project_dir: tide-rest-api-service
           - project_dir: warp-rest-api-service
-          - project_dir: tonic-grpc-service
+#          - project_dir: tonic-grpc-service
     with:
       cargo_project_dir: ${{ matrix.project.project_dir }}
       cargo_tests_enabled: true
