@@ -1,7 +1,7 @@
-use crate::models::Movie;
 use axum::Json;
 use axum::http::StatusCode;
 use axum::response::IntoResponse;
+use common::Movie;
 use log::info;
 use tokio::fs;
 

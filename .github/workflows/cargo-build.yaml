@@ -1,0 +1,32 @@
+name: cargo-build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    uses: josephrodriguez/github-workflow/.github/workflows/cargo-build.yaml@8c749b9a3156400b1ae2f7d1dee68a7d76d1f63a
+    strategy:
+      fail-fast: true
+      matrix:
+        project:
+          - project_dir: actixweb-rest-api-service
+          - project_dir: axum-rest-api-service
+          - project_dir: rocket-rest-api-service
+          - project_dir: tide-rest-api-service
+          - project_dir: warp-rest-api-service
+#          - project_dir: tonic-grpc-service
+    with:
+      cargo_project_dir: ${{ matrix.project.project_dir }}
+      cargo_artifacts_name: ${{ matrix.project.project_dir }}
+      cargo_tests_enabled: false
+      cargo_clippy_enabled: true
+      cargo_audit_enabled: false
+
+  dependabot:
+    needs: [build]
+    permissions: write-all
+    uses: josephrodriguez/github-workflow/.github/workflows/dependabot-merge-pull-request.yaml@befa60a159b917e6025b4b0dec102abd8d462901
+    secrets:
+      AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
