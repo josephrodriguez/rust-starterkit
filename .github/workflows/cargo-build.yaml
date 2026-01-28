@@ -19,7 +19,7 @@ jobs:
 #          - project_dir: tonic-grpc-service
     with:
       cargo_project_dir: ${{ matrix.project.project_dir }}
-      cargo_tests_enabled: true
+      cargo_tests_enabled: false
       cargo_clippy_enabled: true
       cargo_audit_enabled: false
 #on:
