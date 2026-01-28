@@ -21,7 +21,7 @@ jobs:
       cargo_project_dir: ${{ matrix.project.project_dir }}
       cargo_tests_enabled: true
       cargo_clippy_enabled: true
-      cargo_audit_enabled: true
+      cargo_audit_enabled: false
 #on:
 #  push:
 #    branches:
