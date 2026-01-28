@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    uses: josephrodriguez/github-workflow/.github/workflows/cargo-build.yaml@982a7b684510cc5ba55cf16bfb9f055f1f173876
     strategy:
       fail-fast: true
       matrix:
@@ -16,7 +17,6 @@ jobs:
           - project_dir: tide-rest-api-service
           - project_dir: warp-rest-api-service
           - project_dir: tonic-grpc-service
-    uses: josephrodriguez/github-workflow/.github/workflows/cargo-build.yaml@befa60a159b917e6025b4b0dec102abd8d462901
     with:
       cargo_project_dir: ${{ matrix.project.project_dir }}
       cargo_tests_enabled: true
